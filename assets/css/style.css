@@ -1,13 +1,36 @@
+:root {
+  --darkCol: rgb(139, 11, 139) ;
+}
+
 body {
   background-color: #eff5f8
+}
+
+a {
+  text-decoration-line: none;
+  color: var(--darkCol);
+  font-size: small;
+  text-align: left;
+}
+
+h1 {
+  text-align: center;
 }
 
 .container {
   display: block;
   margin: 40px auto;
-  text-align: center;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   width: 60vw;
   background-color: #f0ead6;
 }
+
+.card-contents {
+  display: block;
+  text-align: center;
+  padding: 15%;
+  padding-bottom: 10%;
+  padding-top: 5%;
+}
+
