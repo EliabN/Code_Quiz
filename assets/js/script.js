@@ -159,6 +159,8 @@ function saveUser() {
       createNameInput();
     }
   }
+
+  
   
 
 startBtn.addEventListener("click", startQuiz);
