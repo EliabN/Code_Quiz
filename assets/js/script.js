@@ -117,6 +117,7 @@ var allQ = [
         var submitButton = document.createElement("button");
         submitButton.type = "submit";
         submitButton.textContent = "Submit";
+        submitButton.setAttribute("style", "font-size: 18px")
       
         nameForm.appendChild(nameLabel);
         nameForm.appendChild(nameInput);
@@ -129,7 +130,6 @@ var allQ = [
           
             var nameInput = document.getElementById("nameInput");
             var name = nameInput.value;
-            var score = 90; // Replace with the actual score
           
             console.log(typeof name);
           
@@ -160,7 +160,7 @@ var allQ = [
       
         // Store the updated highScoreData back in localStorage
         localStorage.setItem("highScore", JSON.stringify(highScoreData));
-      }
+    }
     
     function nextQuestion() {
         quesNo++;
@@ -179,6 +179,8 @@ var allQ = [
           createNameInput();
         }
     }
+
+
 
     
 
