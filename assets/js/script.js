@@ -74,11 +74,13 @@ var allQ = [
         var qNo = 1;
         for (var i = 0; i < quizQ.answers.length; i++) {
             var button = document.createElement('button');
+            button.setAttribute("style", "display: block")
             button.textContent = qNo + " " + quizQ.answers[i];
             console.log("Buttons" + quesNo);
             qNo++
             button.addEventListener('click', checkAnswer);
             buttonContainer.appendChild(button);
+
         }
     }
 
@@ -90,8 +92,6 @@ var allQ = [
           console.log("Remove");
         }
     }
-
-
     
 
     //removeButtons()
@@ -99,66 +99,90 @@ var allQ = [
     var vvvv = localStorage.getItem("highScore")
 
 
-
-function saveUser() {
-    var nameInput = document.getElementById("nameInput");
-    var name = nameInput.value;
-  
-    var score = 100; // Assuming you have a score value
-  
-    // Add the user's name and score to the highScore array
-    highScore.push({ name: name, score: score });
-  
-    // Convert the highScore array to JSON and store it in local storage
-    localStorage.setItem("highScore", JSON.stringify(highScore));
-  }
-  
-  
-  function createNameInput() {
-    var cardContents = document.querySelector('.card-contents'); // Get the .card-contents element
-  
-    var nameForm = document.createElement("form");
-    nameForm.id = "nameForm";
-  
-    var nameLabel = document.createElement("label");
-    nameLabel.textContent = "Enter your name:";
-    nameLabel.setAttribute("for", "nameInput");
-  
-    var nameInput = document.createElement("input");
-    nameInput.type = "text";
-    nameInput.id = "nameInput";
-    nameInput.required = true;
-  
-    var submitButton = document.createElement("button");
-    submitButton.type = "submit";
-    submitButton.textContent = "Submit";
-  
-    nameForm.appendChild(nameLabel);
-    nameForm.appendChild(nameInput);
-    nameForm.appendChild(submitButton);
-  
-    cardContents.appendChild(nameForm); // Append the form to the .card-contents element
-  }
-  
-  // ...
-  
-  function nextQuestion() {
-    quesNo++;
-    if (quesNo < allQ.length) {
-      quizQ = allQ[quesNo];
-      h1.textContent = quizQ.question;
-      removeButtons();
-      createButtons();
-      console.log("New Q" + quesNo + "___" + quizQ.question);
-    } else {
-      console.log("Quiz Completed");
-      h1.textContent = "Quiz Completed";
-      var scoreText = document.createElement("p");
-      scoreText.textContent = "Your final score is " + score;
-      buttonContainer.appendChild(scoreText);
-      createNameInput();
+    function createNameInput() {
+        var cardContents = document.querySelector('.card-contents'); // Get the .card-contents element
+      
+        var nameForm = document.createElement("form");
+        nameForm.id = "nameForm";
+      
+        var nameLabel = document.createElement("label");
+        nameLabel.textContent = "Enter your name:";
+        nameLabel.setAttribute("for", "nameInput");
+      
+        var nameInput = document.createElement("input");
+        nameInput.type = "text";
+        nameInput.id = "nameInput";
+        nameInput.required = true;
+      
+        var submitButton = document.createElement("button");
+        submitButton.type = "submit";
+        submitButton.textContent = "Submit";
+      
+        nameForm.appendChild(nameLabel);
+        nameForm.appendChild(nameInput);
+        nameForm.appendChild(submitButton);
+      
+        cardContents.appendChild(nameForm); // Append the form to the .card-contents element
+      
+        nameForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+          
+            var nameInput = document.getElementById("nameInput");
+            var name = nameInput.value;
+            var score = 90; // Replace with the actual score
+          
+            console.log(typeof name);
+          
+            // Call the saveUserScore function to update the highScore
+            saveUserScore(name, score);
+          
+            // Redirect to highscore.html
+            window.location.href = "highscore.html";
+        });
     }
-  }
+    
+    function saveUserScore(name, score) {
+        var highScore = localStorage.getItem("highScore");
+        var highScoreData;
+      
+        try {
+          highScoreData = highScore ? JSON.parse(highScore) : [];
+        } catch (error) {
+          console.error("Error parsing highScore:", error);
+          highScoreData = [];
+        }
+      
+        // Create a new score record
+        var newScore = { name: name, score: score };
+      
+        // Add the new score to the highScoreData array
+        highScoreData.push(newScore);
+      
+        // Store the updated highScoreData back in localStorage
+        localStorage.setItem("highScore", JSON.stringify(highScoreData));
+      }
+    
+    function nextQuestion() {
+        quesNo++;
+        if (quesNo < allQ.length) {
+          quizQ = allQ[quesNo];
+          h1.textContent = quizQ.question;
+          removeButtons();
+          createButtons();
+          console.log("New Q" + quesNo + "___" + quizQ.question);
+        } else {
+          console.log("Quiz Completed");
+          h1.textContent = "Quiz Completed";
+          var scoreText = document.createElement("p");
+          scoreText.textContent = "Your final score is " + score;
+          buttonContainer.appendChild(scoreText);
+          createNameInput();
+        }
+    }
+
+    
+
+    
 
   
   
