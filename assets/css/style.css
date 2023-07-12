@@ -1,7 +1,9 @@
+/* Set the custom variable darkCol */
 :root {
   --darkCol: rgb(139, 11, 139) ;
 }
 
+/* Set the background color of the body element to a light gray color. */
 body {
   background-color: #eff5f8;
   font-family: 'Courier New', monospace;
@@ -9,6 +11,7 @@ body {
   color:  rgb(0, 235, 235);
 }
 
+/* Set the cursor of the button element to a pointer. */
 button {
   cursor: pointer;
   background-color: var(--darkCol);
@@ -18,6 +21,7 @@ button {
   border-radius: 5px;
 }
 
+/* Set the text link element */
 a {
   text-decoration-line: none;
   color: var(--darkCol);
@@ -25,12 +29,14 @@ a {
   text-align: left;
 }
 
+/* Set the text alignment of the h1 element to center. */
 h1 {
   text-align: center;
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
+/* Set the display of the container element */
 .container {
   display: block;
   margin: 40px auto;
@@ -42,6 +48,7 @@ h1 {
   border-radius: 5px;
 }
 
+/* Set the display of the card-contents element to flex. */
 .card-contents {
   display: flex;
   flex-direction: column;
@@ -61,9 +68,10 @@ form {
 
 label {
   display: block;
-  margin: 1.3%;
+  margin: 1.5%;
 }
 
+/* Set the margin of the input element to 1% on the left and right sides. */
 input[type="text"] {
   margin: 1%;
   margin-right: 1%;
@@ -71,7 +79,7 @@ input[type="text"] {
 }
 
 /* highscore.html page*/
-
+/* Set the ul element */
 ul {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -90,8 +98,15 @@ li {
   text-align: left;
 }
 
+/* Set the display of the return and clear elements to inline-block. */
 #return, #clear {
   display: inline-block;
   width:fit-content;
   margin-right: 2%;
 }
+
+/* Set responsive text size */
+.my-element {
+  font-size: 1rem;
+}
+

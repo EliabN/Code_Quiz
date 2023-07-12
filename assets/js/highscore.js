@@ -11,6 +11,7 @@ var scores = JSON.parse(highScoreData);
 var scoreList = document.querySelector("#score-list");
 
 document.getElementById("clear").addEventListener("click", function() {
+    preventDefault();
     localStorage.clear()
     scoreList.remove();
     scores = [];
