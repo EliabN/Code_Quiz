@@ -13,9 +13,6 @@ var scoreList = document.querySelector("#score-list");
 
 // Add an event listener to the clear button
 document.getElementById("clear").addEventListener("click", function() {
-    // Prevent the default action of the button
-    preventDefault();
-
     // Clear the local storage
     localStorage.clear();
 

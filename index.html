@@ -1,3 +1,4 @@
+<!-- This is the HTML code for the Code Quiz page. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,15 +9,30 @@
 </head>
 
 <body>
-  <div class="wrapper">
-    <div class="container">
+    <!-- This creates a wrapper div for the page. -->
+    <div class="wrapper">
+  
+      <!-- This creates a container div for the page content. -->
+      <div class="container">
+  
+        <!-- This creates a link to the high score page. -->
         <a href="highscore.html">View high score</a>
-      <div class= "card-contents">
-        <h1>Coding Quiz Challenge</h1>
-        <div id="button-container"></div>
-        <button id="start">Start Quiz</button>
+  
+        <!-- This creates a card-contents div for the quiz content. -->
+        <div class="card-contents">
+  
+          <!-- This creates an h1 element for the quiz title. -->
+          <h1>Coding Quiz Challenge</h1>
+  
+          <!-- This creates a div for the buttons. -->
+          <div id="button-container"></div>
+  
+          <!-- This creates a button for starting the quiz. -->
+          <button id="start">Start Quiz</button>
       </div>
     </div>
+    <!-- This creates a div for displaying the timer. -->
+    <div id="timer" class="timer"></div>
   </div>
 
   <script src="./assets/js/script.js"></script>
