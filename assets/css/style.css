@@ -105,6 +105,9 @@ li {
   margin-right: 2%;
 }
 
+.timer {
+  text-align: right;
+}
 
 /* Set responsive text size 
 .my-element {

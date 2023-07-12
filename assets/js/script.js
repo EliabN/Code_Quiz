@@ -7,6 +7,9 @@ var h1 = document.querySelector("h1");
 // Define the buttonContainer variable.
 var buttonContainer = document.querySelector('#button-container');
 
+// p element #message 
+var message = document.querySelector('#message');
+
 // Define the quesNo variable.
 var quesNo = 0; // Current question number.
 
@@ -17,7 +20,7 @@ var score = 0; // User's score.
 var timer = null;
 
 // Time remaining
-var timeRemaining = 5;
+var timeRemaining = 90;
 
 // Define the all question as object array variable.
 var allQ = [
@@ -30,15 +33,25 @@ var allQ = [
     correctAnswer: "Collect of datatypes",
   },
     {
-    question: "JavaScript",
-    answers: ["Collect of datatypes", "BBBBBBB", "BBBBBBB", "BBBBBBB"],
-    correctAnswer: "Collect of datatypes",
+    question: "Commonly used data type DO NOT INCLUDE:",
+    answers: ["String", "Boolean", "Alerts", "Numbers"],
+    correctAnswer: "Alerts",
     },
     {
-        question: "ZZZZZZZJavaScript",
-        answers: ["Collect of datatypes", "CCCCCCCCC", "CCCCCCCCC", "CCCCCCCCC"],
-        correctAnswer: "Collect of datatypes",
-    }];
+        question: "String Values Must be inclosed with _____ when being assigned to valiables:",
+        answers: ["Commas", "Curly Brackets", "Quotes", "Parenthesis"],
+        correctAnswer: "Quotes",
+    },
+    {
+        question: "Inside which HTML element do we put the JavaScript?",
+        answers: ["<js>", "<script>", "<scripting>", "<javascript>"],
+        correctAnswer: "<script>",
+    },
+    {
+        question: "Where is the correct place to insert a JavaScript?",
+        answers: ["The <body> section", "Both the <head> section and the <body>", "The <head> section", "None"],
+        correctAnswer: "Both the <head> section and the <body>",
+        }];
     
 // Questions object array variable.
 var quizQ = allQ[quesNo]
@@ -63,31 +76,30 @@ function startQuiz() {
 // This code defines the checkAnswer() function, which is called when the user clicks one of the buttons.
 function checkAnswer(event) {
 
-  // Get the selected answer from the event object.
-  var selectedAnswer = event.target.textContent.substring(2);
-
-  // Check if the selected answer is the correct answer.
-  if (selectedAnswer === quizQ.correctAnswer) {
-    console.log('Correct!');
-    score = score + 10;
-  } else {
-    console.log('Incorrect!');
-    score = score - 5;
-    // If answer incorrect remaining time -6
-    timeRemaining -= 6;
+    // Get the selected answer from the event object.
+    selectedAnswer = event.target.textContent.substring(2);
+  
+    // Check if the selected answer is correct.
+    if (selectedAnswer === quizQ.correctAnswer) {
+      // Add a <p> element at the bottom of the button answers to display "Correct!" with a break line.
+      message.textContent = "Correct!\n";
+      // Add points
+      score = score + 10;
+    } else {
+      // Add a <p> element at the bottom of the button answers to display "Wrong!" with a break line.
+      message.textContent = "Wrong!\n";
+      // Deduct points
+      score = score - 5;
+      // If answer incorrect remaining time -6
+      timeRemaining -= 6;
+    }
+    removeButtons();
+    // Call the nextQuestion() function to move to the next question.
+    nextQuestion();
   }
-
-  // Remove the buttons from the DOM.
-  removeButtons();
-
-  // Call the nextQuestion() function to move to the next question.
-  nextQuestion();
-}
     
     
     
-    // var buttonContainer = document.querySelector('#button-container');
-    // var currentButtons = document.querySelectorAll('#button-container button');
     
     function createButtons() {
         
@@ -186,7 +198,7 @@ function createNameInput() {
       
         // Store the updated highScoreData back in localStorage.
         localStorage.setItem("highScore", JSON.stringify(highScoreData));
-      }
+    }
 
       function startTimer() {
         timer = setInterval(function() {
@@ -208,27 +220,28 @@ function createNameInput() {
         }, 1000);
       }
       
+      // This function moves to the next question in the quiz.
       function nextQuestion() {
 
-  // This function moves to the next question in the quiz.
-
-  // Increment the question number.
-  quesNo++;
-
-  // If the question number is less than the length of the allQ array and
-  // the time remaining is greater than 0,
-  // then get the next question and display it.
-  if (quesNo < allQ.length && timeRemaining > 0) {
-    quizQ = allQ[quesNo];
-    h1.textContent = quizQ.question;
-    removeButtons();
-    createButtons();
-    console.log("New Q" + quesNo + "___" + quizQ.question);
-  } else {
-    // Otherwise
-    finished();
-  }
-}
+        // This function moves to the next question in the quiz.
+      
+        // Increment the question number.
+        quesNo++;
+      
+        // If the question number is less than the length of the allQ array and
+        // the time remaining is greater than 0,
+        // then get the next question and display it.
+        if (quesNo < allQ.length && timeRemaining > 0) {
+          quizQ = allQ[quesNo];
+          h1.textContent = quizQ.question;
+          removeButtons();
+          createButtons();
+          console.log("New Q" + quesNo + "___" + quizQ.question);
+        } else {
+          // Otherwise
+          finished();
+        }
+    }
 
       // The quiz is complete
       function finished() {
@@ -238,6 +251,7 @@ function createNameInput() {
         var scoreText = document.createElement("p");
         scoreText.textContent = "Your final score is " + score;
         buttonContainer.appendChild(scoreText);
+        message.remove();
         createNameInput();
       }
 
