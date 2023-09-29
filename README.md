@@ -13,5 +13,6 @@ SO THAT I can gauge my progress compared to my peers
 ```
 
 ## Preview
+Click the preview below or click [here](https://eliabn.github.io/Code_Quiz/) to test your knowledge
 
-![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](./assets/images/04-web-apis-homework-demo.gif)
+[![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](./assets/images/04-web-apis-homework-demo.gif)](https://eliabn.github.io/Code_Quiz/)
